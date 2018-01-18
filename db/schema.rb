@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180118013257) do
+ActiveRecord::Schema.define(version: 20180118014553) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "fund_sections", force: :cascade do |t|
+    t.bigint "portfolio_id"
+    t.bigint "fund_id"
+    t.decimal "shares"
+    t.decimal "last_share_price"
+    t.decimal "last_share_price_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["fund_id"], name: "index_fund_sections_on_fund_id"
+    t.index ["portfolio_id"], name: "index_fund_sections_on_portfolio_id"
+  end
 
   create_table "funds", force: :cascade do |t|
     t.string "ticker"
