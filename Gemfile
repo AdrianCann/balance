@@ -26,6 +26,9 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+#
+# gem 'dotenv-rails'
+gem 'stock_quote'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -34,7 +37,9 @@ group :development, :test do
 end
 
 group :test do
-    gem 'shoulda-matchers', '~> 3.0'
+  gem 'shoulda-matchers', '~> 3.0'
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :development do

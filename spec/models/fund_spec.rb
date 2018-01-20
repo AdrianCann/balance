@@ -4,4 +4,12 @@ RSpec.describe Fund, type: :model do
   it { should validate_uniqueness_of(:ticker) }
   it { should validate_presence_of(:ticker) }
   it { should have_many(:fund_sections) }
+
+  describe '#get_share_price', :vcr do
+    it 'gets the share price' do
+      fund = Fund.new(ticker: 'AAPL')
+
+      expect(fund.get_share_price).to eq(178.46)
+    end
+  end
 end
