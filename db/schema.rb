@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180118014553) do
+ActiveRecord::Schema.define(version: 20180120194448) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,8 +19,6 @@ ActiveRecord::Schema.define(version: 20180118014553) do
     t.bigint "portfolio_id"
     t.bigint "fund_id"
     t.decimal "shares"
-    t.decimal "last_share_price"
-    t.decimal "last_share_price_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["fund_id"], name: "index_fund_sections_on_fund_id"
@@ -35,6 +33,8 @@ ActiveRecord::Schema.define(version: 20180118014553) do
     t.datetime "last_valued_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "last_share_price"
+    t.datetime "last_share_price_at"
     t.index ["ticker"], name: "index_funds_on_ticker"
   end
 
