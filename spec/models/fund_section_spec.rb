@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe FundSection do
   it { should belong_to(:portfolio) }
+  it { should belong_to(:fund) }
 
   describe '#current_value' do
     it 'multiplies number of shares by the price per share' do
