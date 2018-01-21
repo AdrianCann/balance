@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180121132045) do
+ActiveRecord::Schema.define(version: 20180121161207) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "asset_class_sections", force: :cascade do |t|
+    t.bigint "fund_id", null: false
+    t.bigint "asset_class_id", null: false
+    t.decimal "percentage", default: "0.0", null: false
+    t.datetime "percentage_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["asset_class_id", "fund_id"], name: "index_asset_classes_funds_on_asset_class_id_and_fund_id"
+    t.index ["fund_id", "asset_class_id"], name: "index_asset_classes_funds_on_fund_id_and_asset_class_id"
+  end
 
   create_table "asset_classes", force: :cascade do |t|
     t.string "name"
