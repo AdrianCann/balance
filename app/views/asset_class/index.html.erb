@@ -1,0 +1,13 @@
+<h1>Asset Classes</h1>
+<ul>
+  <% @asset_classes.each do |asset| %>
+    <li><%= asset.name %>&#9;<%= asset.description %></li>
+  <% end %>
+</ul>
+
+<%= form_for :asset_class do |f| %>
+  <%= f.text_field :name %>
+  <%= f.text_field :description %>
+  <%= f.submit 'Submit' %>
+<% end %>
+

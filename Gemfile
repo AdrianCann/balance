@@ -41,6 +41,7 @@ group :test do
   gem 'shoulda-matchers', '~> 3.0'
   gem 'vcr'
   gem 'webmock'
+  gem 'capybara-selenium'
 end
 
 group :development do
