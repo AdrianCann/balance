@@ -3,3 +3,5 @@ cache: bundler
 branches:
   only:
     - master
+before_install:
+  - gem update --system
