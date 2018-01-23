@@ -3,8 +3,3 @@ cache: bundler
 branches:
   only:
     - master
-services:
-  - postgresql
-before_script:
-  - psql -c 'create database travis_ci_test;' -U postgres
-  - bin/rake db:create db:schema:load
