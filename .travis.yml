@@ -5,3 +5,5 @@ branches:
     - master
 before_install:
   - gem update --system
+  - bundle exec rake db:test:create
+  - bundle exec rake db:test:load
