@@ -1,4 +1,5 @@
 class Portfolio < ApplicationRecord
+  validates :name, presence: true, uniqueness: true
   has_many :fund_sections
 
   def asset_total

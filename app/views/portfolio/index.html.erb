@@ -1,0 +1,14 @@
+<h1>Portfolios</h1>
+
+<ul>
+  <% @portfolios.each do |portfolio| %>
+    <li><%= portfolio.name %>&#9;<%= portfolio.description %></li>
+  <% end %>
+</ul>
+
+<%= form_for :portfolio do |f| %>
+  <%= f.text_field :name %>
+  <%= f.text_field :description %>
+  <%= f.submit 'Submit' %>
+<% end %>
+
