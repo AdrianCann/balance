@@ -16,6 +16,22 @@ class PortfolioController < ApplicationController
     end
   end
 
+  def show
+    @portfolio = Portfolio.eager_load(fund_sections: :fund).find(params[:id])
+  end
+
+  def update
+    @portfolio = Portfolio.find(params[:id])
+
+    if @portfolio.update(portfolio_params)
+      flash[:success] = "Successful save"
+      redirect_to portfolio_path(@portfolio)
+    else
+      flash[:danger] = "Failure to save"
+      render :show
+    end
+  end
+
   private
 
   def portfolio_params

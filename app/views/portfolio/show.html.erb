@@ -1,0 +1,19 @@
+<h1><%= @portfolio.name %></h1>
+<%= form_for @portfolio do |f| %>
+  <%= f.text_field :name %>
+  <%= f.text_field :description %>
+  <%= f.submit 'Update' %>
+<% end %>
+
+<% @portfolio.fund_sections.each do |holding| %>
+  <p>You have <%= holding.shares %> shares in <%= holding.fund.name %></p>
+<% end %>
+
+<h3>Add a Fund</h3>
+<%= form_for @portfolio.fund_sections.new do |f| %>
+  <%= text_field_tag :ticker %>
+  <%= f.number_field :shares, class: :text_field, step: :any %>
+  <%= f.hidden_field :portfolio_id, value: @portfolio.id %>
+  <%= f.submit 'Add Fund' %>
+<% end %>
+

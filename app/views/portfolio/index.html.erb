@@ -4,7 +4,10 @@
   <ul class="list-group">
     <% @portfolios.each do |portfolio| %>
       <li class="list-group-item">
-        <strong><%= portfolio.name %></strong>&#9;<%= portfolio.description %>
+        <%= link_to portfolio_path(portfolio) do %>
+          <strong><%= portfolio.name %></strong>
+          &#9;<%= portfolio.description %>
+        <% end %>
       </li>
     <% end %>
   </ul>
