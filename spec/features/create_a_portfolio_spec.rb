@@ -4,7 +4,7 @@ feature 'Create a portfolio' do
   it 'has success' do
     visit portfolio_index_path
     fill_in :portfolio_name, with: 'Bitcoin: The Crypto-Cuck'
-    click_button 'Submit'
+    click_button 'Create'
 
     expect(page).to have_text('Success')
     expect(page).to have_text('Bitcoin: The Crypto-Cuck')
@@ -12,7 +12,7 @@ feature 'Create a portfolio' do
 
   it 'fails gracefully when fields are missing' do
     visit portfolio_index_path
-    click_button 'Submit'
+    click_button 'Create'
 
     expect(page).to have_text('Fail')
   end

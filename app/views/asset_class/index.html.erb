@@ -1,13 +1,21 @@
-<h1>Asset Classes</h1>
-<ul>
-  <% @asset_classes.each do |asset| %>
-    <li><%= asset.name %>&#9;<%= asset.description %></li>
-  <% end %>
-</ul>
+<h1 class="text-center">Asset Classes</h1>
 
-<%= form_for :asset_class do |f| %>
-  <%= f.text_field :name %>
-  <%= f.text_field :description %>
-  <%= f.submit 'Submit' %>
-<% end %>
+<div class="col-md-6">
+  <h3>New asset class</h3>
+  <%= simple_form_for @asset_class, url: asset_class_index_path do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.button :submit %>
+  <% end %>
+</div>
+
+<div class="col-md-6">
+  <ul class="list-group">
+    <% @asset_classes.each do |asset| %>
+      <li class="list-group-item">
+        <strong><%= asset.name %></strong>&#9;<%= asset.description %>
+      </li>
+    <% end %>
+  </ul>
+</div>
 

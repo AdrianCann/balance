@@ -1,14 +1,19 @@
-<h1>Portfolios</h1>
+<h1 class="text-center">Portfolios</h1>
 
-<ul>
-  <% @portfolios.each do |portfolio| %>
-    <li><%= portfolio.name %>&#9;<%= portfolio.description %></li>
+<div class="col-md-6">
+  <ul class="list-group">
+    <% @portfolios.each do |portfolio| %>
+      <li class="list-group-item">
+        <strong><%= portfolio.name %></strong>&#9;<%= portfolio.description %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="col-md-6">
+  <%= simple_form_for @portfolio, url: portfolio_index_path do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.button :submit %>
   <% end %>
-</ul>
-
-<%= form_for :portfolio do |f| %>
-  <%= f.text_field :name %>
-  <%= f.text_field :description %>
-  <%= f.submit 'Submit' %>
-<% end %>
-
+</div>

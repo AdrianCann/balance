@@ -27,7 +27,8 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 #
-# gem 'dotenv-rails'
+gem 'bootstrap-sass', '~> 3.3.0'
+gem 'simple_form'
 gem 'stock_quote'
 
 group :development, :test do
