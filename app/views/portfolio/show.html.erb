@@ -1,19 +1,31 @@
-<h1><%= @portfolio.name %></h1>
-<%= form_for @portfolio do |f| %>
-  <%= f.text_field :name %>
-  <%= f.text_field :description %>
-  <%= f.submit 'Update' %>
-<% end %>
+<h1 class="text-center"><%= @portfolio.name %></h1>
 
-<% @portfolio.fund_sections.each do |holding| %>
-  <p>You have <%= holding.shares %> shares in <%= holding.fund.name %></p>
-<% end %>
+<div class="col-md-6">
+  <%= simple_form_for @portfolio do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.button :submit, 'Update' %>
+  <% end %>
 
-<h3>Add a Fund</h3>
-<%= form_for @portfolio.fund_sections.new do |f| %>
-  <%= text_field_tag :ticker %>
-  <%= f.number_field :shares, class: :text_field, step: :any %>
-  <%= f.hidden_field :portfolio_id, value: @portfolio.id %>
-  <%= f.submit 'Add Fund' %>
-<% end %>
+  <h3>Holdings</h3>
+  <ul class="list-group">
+    <% @portfolio.fund_sections.each do |holding| %>
+      <li class="list-group-item">
+        You have <%= holding.shares %> shares in <%= holding.fund.name %>
+      </li>
+    <% end %>
+  </ul>
+</div>
 
+<div class="col-md-6">
+  <h3>Add a Fund</h3>
+  <%= simple_form_for @portfolio.fund_sections.new do |f| %>
+    <div class="form-group">
+      <%= label_tag :ticker %>
+      <%= text_field_tag :ticker, nil, class: "form-control" %>
+    </div>
+    <%= f.input :shares, class: :text_field, step: :any %>
+    <%= f.hidden_field :portfolio_id, value: @portfolio.id %>
+    <%= f.button :submit, 'Add Fund' %>
+  <% end %>
+</div>
