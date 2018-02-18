@@ -43,6 +43,7 @@ group :test do
   gem 'vcr'
   gem 'webmock'
   gem 'capybara-selenium'
+  gem 'launchy'
 end
 
 group :development do
